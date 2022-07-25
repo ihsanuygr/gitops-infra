@@ -16,7 +16,7 @@ variable "gke_num_nodes" {
 # GKE cluster
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
-  location = var.region
+  location = var.zone
   
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
@@ -45,8 +45,8 @@ resource "google_container_node_pool" "primary_nodes" {
       env = var.project_id
     }
 
-    # preemptible  = true
-    machine_type = "n1-standard-1"
+    preemptible  = true
+    machine_type = "e2-medium"
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
