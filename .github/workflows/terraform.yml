@@ -37,7 +37,7 @@ jobs:
   terraform-cd:
     runs-on: self-hosted
     needs: terraform-ci
-    if: ${{GITHUB_REF_NAME == 'master'}}
+    if: ${{env.GITHUB_REF_NAME == 'master'}}
     steps:
       - name: Terraform Init/Plan
         run: |
