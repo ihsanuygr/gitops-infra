@@ -1,9 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: guestbook1
   # You'll usually want to add your resources to the argocd namespace.
-  namespace: argocd
   # Add this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -22,7 +21,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     # The namespace will only be set for namespace-scoped resources that have not set a value for .metadata.namespace
-    namespace: guestbook
+    namespace: default
   # Sync policy
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
