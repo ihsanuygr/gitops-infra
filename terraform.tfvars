@@ -1,2 +1,2 @@
 project_id = "cs-gitops-demo"
-region     = "eu-west3"
+region     = "europe-west3"
