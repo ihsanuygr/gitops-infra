@@ -57,6 +57,6 @@ jobs:
       
       - name: Install argocd
         run: |
-          gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --region $(terraform output -raw region)
+          gcloud container clusters get-credentials $(terraform output -raw kubernetes_cluster_name) --zone $(terraform output -raw zone)
           kubectl create namespace argocd
           kubectl apply -n argocd -f argocd.yaml
