@@ -13,7 +13,7 @@ variable "gke_num_nodes" {
   description = "number of gke nodes"
 }
 variable "gke_zone" {
-  default     = europe-west3-a
+  default     = "europe-west3-a"
   description = "zonal cluster zone"
 }
 
