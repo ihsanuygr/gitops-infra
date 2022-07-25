@@ -12,7 +12,8 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+env:
+  BRANCH_NAME: ${GITHUB_REF_NAME}
 jobs:
   # This workflow contains a single job called "build"
   terraform-ci:
@@ -37,7 +38,7 @@ jobs:
   terraform-cd:
     runs-on: self-hosted
     needs: terraform-ci
-    if: ${{env.GITHUB_REF_NAME == 'master'}}
+    if: ${{BRANCH_NAME == 'master'}}
     steps:
       - name: Terraform Init/Plan
         run: |
