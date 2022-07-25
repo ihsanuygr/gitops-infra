@@ -12,11 +12,17 @@ variable "gke_num_nodes" {
   default     = 2
   description = "number of gke nodes"
 }
+variable "gke_zone" {
+  default     = europe-west3-a
+  description = "zonal cluster zone"
+}
+
+
 
 # GKE cluster
 resource "google_container_cluster" "primary" {
   name     = "${var.project_id}-gke"
-  location = var.zone
+  location = "${var.gke_zone}"
   
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
