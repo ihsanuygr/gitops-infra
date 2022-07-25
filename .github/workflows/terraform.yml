@@ -38,7 +38,7 @@ jobs:
   terraform-cd:
     runs-on: self-hosted
     needs: terraform-ci
-    if: ${{ env.BRANCH_NAME == 'master' }}
+    if: ${{ github.event_name != 'pull_request' }}
     steps:
       - name: Terraform Init/Plan
         run: |
