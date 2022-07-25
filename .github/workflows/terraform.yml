@@ -61,4 +61,4 @@ jobs:
           kubectl create namespace argocd
           kubectl apply -n argocd -f argocd.yaml
           sleep 10
-          kubectl apply argocd-application.yaml
+          kubectl apply -f argocd-application.yaml
